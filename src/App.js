@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { ScatterChart, Scatter, XAxis, YAxis, CartesianGrid, Tooltip } from 'recharts';
 import axios from 'axios';
+import PredictForm from './PredictForm';
 
 function App() {
   const [data, setData] = useState([]);
@@ -54,7 +55,7 @@ function App() {
       <ScatterChart width={600} height={400}>
         <CartesianGrid />
         <XAxis type="number" dataKey="x" name="Age" />
-        <YAxis type="number" dataKey="y" name="Work Experience" />
+        <YAxis type="number" dataKey="y" name="Var_1" />
         <Tooltip cursor={{ strokeDasharray: '3 3' }} />
         {[...new Set(data.map(d => d.cluster))].map(cluster => (
           <Scatter
@@ -65,6 +66,8 @@ function App() {
           />
         ))}
       </ScatterChart>
+
+      <PredictForm />
 
 
       <h2>Decisions Based on Clusters</h2>
